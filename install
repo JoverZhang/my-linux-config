@@ -1,0 +1,12 @@
+#!/bin/bash
+
+package_manager='yay'
+package_manager_args='-S --noconfirm'
+
+# install package manager
+pacman -S --noconfirm $(package_manager)
+
+# install packages.aur
+packages=$(awk '!/^#.*/{print}' ~/packages.aur)
+$package_manager $package_manager_args ${packages[@]}
+

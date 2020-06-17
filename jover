@@ -1,0 +1,23 @@
+# copyright Jover Zhang <joverzh@gmail.com>
+
+# append .bashrc
+if [ "$1" = init ]
+then
+  target_file="$HOME/.bashrc"
+  exist_line=$(grep -n 'source $HOME/.mybashrc' $target_file | awk -F ':' '{print $1}')
+  if [ $exist_line ]
+  then
+    echo existed.
+  else
+    sed -i "$ a source \$HOME\/\.mybashrc" $target_file
+    echo success added.
+  fi
+# copy ./self/* to $HOME/
+elif [ "$1" = override ]
+then
+  cp -ri ./self/.[^.]* ~/
+else
+  echo init override
+fi
+
+source ./abc
