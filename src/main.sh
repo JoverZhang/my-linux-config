@@ -15,22 +15,18 @@ operations:
   install:
     [file]: Install packages by .aurepo file. Default use $JOVER/etc/packages.aurepo file.
 
-  load override:
-    Override config_files in $HOME/ from /etc/own .
-    If #APPEND_TO_FILE is first line from file,
-    then this file will not overrided old_file from $HOME,
-
-  load special
-    To 'special' content into old_file.
-    In other cases, 
-
-  clean:
-    Opposite to override.
-    This method will resotre $HOME to before using override.
+  load:
+    override:
+      Override config_files in $HOME/ from /etc/own .
+     If #APPEND_TO_FILE is first line from file,
+     then this file will not overrided old_file from $HOME,
+    special:
+      To 'special' content into old_file.
+      In other cases, 
 
   proxy:
-    start:  open local proxychains.
-    stop:   close local proxychains.
+    start: open local proxychains.
+    stop: close local proxychains.
 "
 
 case $1 in
@@ -41,6 +37,14 @@ case $1 in
   load)
     source $JOVER/src/load.sh
     load ${@:2}
+    ;;
+
+  proxy)
+    source $JOVER/src/proxy.sh ${@:2}
+    ;;
+
+  install)
+    source $JOVER/src/install.sh ${@:2}
     ;;
 
   -h|--help|'')

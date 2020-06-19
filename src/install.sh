@@ -4,12 +4,9 @@
 
 
 package_manager='yay'
-package_manager_args='-S --noconfirm'
-
-# install package manager
-pacman -S --noconfirm $(package_manager)
+package_manager_args='-S'
 
 # install packages.aur
-packages=$(awk '!/^#.*/{print}' ~/packages.aur)
+packages=$(awk '!/^#.*/{print}' $JOVER/etc/packages.aurepo)
 $package_manager $package_manager_args ${packages[@]}
 

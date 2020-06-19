@@ -8,10 +8,10 @@
 JOVER_VERSION='0.0.1-test.1'
 
 
-git clone https://github.com/JoverZhang/mylinux.git ~/.mylinux
+git clone https://github.com/JoverZhang/mylinux.git $HOME/.mylinux
 
 mylinux_env="export JOVER=$HOME/.mylinux"
 
-sed -i "/$mylinux_env/d" ~/.bashrc
-sed -i "$ a $mylinux_env" ~/.bashrc
+sed -i "s|$mylinux_env||" $HOME/.bashrc
+sed -i "$ a $mylinux_env" $HOME/.bashrc
 
