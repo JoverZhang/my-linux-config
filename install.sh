@@ -5,6 +5,9 @@
 # This is install file.
 # Use git download project to ~/.mylinux
 
+JOVER_VERSION='0.0.1-test.1'
+
+
 git clone https://github.com/JoverZhang/mylinux.git ~/.mylinux
 
 mylinux_env="export JOVER=$HOME/.mylinux"
