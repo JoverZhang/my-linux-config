@@ -1,0 +1,6 @@
+#!/bin/bash
+# author: Jover Zhang <joverzh@gmail.com>
+# url: https://www.github.com/JoverZhang/mylinux
+
+source $JOVER/src/main.sh $@
+
