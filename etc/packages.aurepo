@@ -1,7 +1,16 @@
 # tools
+zsh
 vim
 net-tools
+base-devel
+
+# dev
 docker
+deno
+nodejs
+python-pip
+
+# software
 google-chrome
 
 # ladder.

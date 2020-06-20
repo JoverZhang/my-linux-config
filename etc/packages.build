@@ -1,0 +1,2 @@
+# https://github.com/huan/docker-wechat
+curl -sL https://raw.githubusercontent.com/huan/docker-wechat/master/dochat.sh | bash
