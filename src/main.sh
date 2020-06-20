@@ -5,33 +5,24 @@
 source $JOVER/lib/utilities.bash
 
 
-manual="usage: jover <operation> [...]
+_help="usage: mylinux <operation> [...]
 
 operations:
-  init:
-    Change mirrors to China. (sudo pacman-mirrors -i -c China -m rank)
-    Install install base_packages (yay, unionfs-fuse).
-
-  install:
-    [file]: Install packages by .aurepo file. Default use $JOVER/etc/packages.aurepo file.
-
-  load:
-    override:
-      Override config_files in $HOME/ from /etc/own .
-     If #APPEND_TO_FILE is first line from file,
-     then this file will not overrided old_file from $HOME,
-    special:
-      To 'special' content into old_file.
-      In other cases, 
-
-  proxy:
-    start: open local proxychains.
-    stop: close local proxychains.
+    mylinux init    <options>
+    mylinux install <options>
+    mylinux load    <options>
+    mylinux proxy   <options>
 "
 
 case $1 in
   init)
     source $JOVER/src/init.sh
+    init ${@:2}
+    ;;
+
+  install)
+    source $JOVER/src/install.sh
+    install ${@:2}
     ;;
 
   load)
@@ -40,15 +31,12 @@ case $1 in
     ;;
 
   proxy)
-    source $JOVER/src/proxy.sh ${@:2}
-    ;;
-
-  install)
-    source $JOVER/src/install.sh ${@:2}
+    source $JOVER/src/proxy.sh
+    proxy ${@:2}
     ;;
 
   -h|--help|'')
-    information "$manual";
+    information "$_help";
     ;;
 
   *)

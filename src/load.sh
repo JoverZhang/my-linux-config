@@ -5,6 +5,15 @@
 source $JOVER/lib/utilities.bash
 
 
+_help="usage: mylinux load <operation>
+
+operations:
+    override        Override config_files in $HOME/[files] from $JOVER/etc/home/[files],
+    special         To 'special' content into $HOME/[files],
+                    for file of first line is #!SPECIAL.
+    -a --all        Do override and special.
+"
+
 STORE=$JOVER/etc/home
 
 
@@ -78,24 +87,27 @@ override() {
 load() { # params: (operator:str, ...args)
   case $1 in
     'override')
-      echo override
       override $@
-    ;;
+      ;;
   
     'special')
-      echo special
       special $@
-    ;;
+      ;;
   
     -a|--all)
-      echo all
+      echo do all...
+      echo override
       override $@
+      echo special
       special $@
-    ;;
+      ;;
+
+    -h|--help|'')
+      information "$_help";
+      ;;
 
     *)
       error "not found operate: \"$1\""
-    ;;
   esac
 }
 
